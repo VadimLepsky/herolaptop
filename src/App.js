@@ -60,12 +60,12 @@ export default function App() {
   >
     <Model />
       {/* базовое мягкое освещение */}
-<ambientLight intensity={0.15} />
+<ambientLight intensity={0.05} />
 
 {/* Основной свет (key light) — регулируешь яркость и направление */}
 <directionalLight
   position={[-3, 5, 5]}
-  intensity={1.0}
+  intensity={0.9}
   color={'white'}
 />
 
