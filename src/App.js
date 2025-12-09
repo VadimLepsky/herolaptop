@@ -59,6 +59,37 @@ export default function App() {
     scale={0.8}
   >
     <Model />
+      {/* базовое мягкое освещение */}
+<ambientLight intensity={0.15} />
+
+{/* Основной свет (key light) — регулируешь яркость и направление */}
+<directionalLight
+  position={[-3, 5, 5]}
+  intensity={1.0}
+  color={'white'}
+/>
+
+{/* Заполняющий свет (fill) — чтобы не были проваленные тени */}
+<directionalLight
+  position={[3, 1, 2]}
+  intensity={0.3}
+  color={'white'}
+/>
+
+{/* Контровой свет (rim) — подчёркивает границы от тёмного фона */}
+<spotLight
+  position={[5, 3, -3]}
+  intensity={0.4}
+  angle={0.6}
+  penumbra={0.5}
+/>
+
+{/* Environment — общий тон сцены, тоже регулируешь */}
+<Environment
+  preset="studio"
+  background={false}
+  intensity={0.4}
+/>
   </group>
   <Environment preset="city" />
 </Suspense>
