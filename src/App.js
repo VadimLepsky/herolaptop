@@ -45,7 +45,12 @@ function Model(props) {
 
 export default function App() {
   return (
-    <Canvas camera={{ position: [-5, 0, -15], fov: 55 }} style={{ background: '#FFFFFF' }}>
+    <Canvas
+  gl={{ alpha: true }}                            
+  onCreated={({ gl }) => gl.setClearColor(0x000000, 0)} 
+  camera={{ position: [-5, 0, -15], fov: 55 }}
+  style={{ background: 'transparent' }}            
+>
       <pointLight position={[10, 10, 10]} intensity={1.5} />
       <Suspense fallback={null}>
   <group 
