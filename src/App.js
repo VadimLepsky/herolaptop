@@ -52,49 +52,35 @@ export default function App() {
   style={{ background: 'transparent' }}            
 >
       <pointLight position={[10, 10, 10]} intensity={1.5} />
+  
+  {/* --- вставляем сюда регулируемый свет --- */}
+  <ambientLight intensity={0.15} />
+
+  <directionalLight
+    position={[-3, 5, 5]}
+    intensity={1.0}
+  />
+
+  <directionalLight
+    position={[3, 1, 2]}
+    intensity={0.3}
+  />
+
+  <spotLight
+    position={[5, 3, -3]}
+    intensity={0.4}
+    angle={0.6}
+    penumbra={0.5}
+  />
+
+  <Environment preset="studio" background={false} intensity={0.4} />
+  {/* ----------------------------------------- */}
       <Suspense fallback={null}>
   <group 
     rotation={[0, Math.PI, 0]} 
     position={[0, 1, 0]} 
     scale={0.8}
   >
-    <Model />
-      {/* базовое мягкое освещение */}
-<ambientLight intensity={0.05} />
-
-{/* Основной свет (key light) — регулируешь яркость и направление */}
-<directionalLight
-  position={[-3, 5, 5]}
-  intensity={0.9}
-  color={'white'}
-/>
-
-{/* Заполняющий свет (fill) — чтобы не были проваленные тени */}
-<directionalLight
-  position={[3, 1, 2]}
-  intensity={0.3}
-  color={'white'}
-/>
-
-{/* Контровой свет (rim) — подчёркивает границы от тёмного фона */}
-<spotLight
-  position={[5, 3, -3]}
-  intensity={0.4}
-  angle={0.6}
-  penumbra={0.5}
-/>
-
-{/* Environment — общий тон сцены, тоже регулируешь */}
-<Environment
-  preset="studio"
-  background={false}
-  intensity={0.4}
-/>
-  </group>
-  <Environment preset="city" />
-</Suspense>
-      {/* <ContactShadows position={[0, -4.5, 0]} scale={20} blur={2} far={4.5} /> */}
-      <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} />
     </Canvas>
   )
 }
