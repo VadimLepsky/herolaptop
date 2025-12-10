@@ -52,35 +52,18 @@ export default function App() {
   style={{ background: 'transparent' }}            
 >
       <pointLight position={[10, 10, 10]} intensity={1.5} />
-  
-  {/* --- вставляем сюда регулируемый свет --- */}
-  <ambientLight intensity={0.15} />
-
-  <directionalLight
-    position={[-3, 5, 5]}
-    intensity={1.0}
-  />
-
-  <directionalLight
-    position={[3, 1, 2]}
-    intensity={0.3}
-  />
-
-  <spotLight
-    position={[5, 3, -3]}
-    intensity={0.4}
-    angle={0.6}
-    penumbra={0.5}
-  />
-
-  <Environment preset="studio" background={false} intensity={0.4} />
-  {/* ----------------------------------------- */}
       <Suspense fallback={null}>
   <group 
     rotation={[0, Math.PI, 0]} 
     position={[0, 1, 0]} 
     scale={0.8}
   >
+    <Model />
+  </group>
+  <Environment preset="city" intensity={0.2} />
+</Suspense>
+      {/* <ContactShadows position={[0, -4.5, 0]} scale={20} blur={2} far={4.5} /> */}
+      <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} />
     </Canvas>
   )
 }
