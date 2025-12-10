@@ -46,7 +46,7 @@ function Model(props) {
 export default function App() {
   return (
     <Canvas camera={{ position: [-5, 0, -15], fov: 55 }} style={{ background: 'transparent' }}>
-      <pointLight position={[10, 10, 10]} intensity={1.5} />
+      <pointLight position={[10, 10, 10]} intensity={1.0} />$
       <Suspense fallback={null}>
   <group 
     rotation={[0, Math.PI, 0]} 
@@ -55,7 +55,7 @@ export default function App() {
   >
     <Model />
   </group>
-  <Environment preset="city" />
+  <Environment preset="city" intensity={0.2} />
 </Suspense>
       {/* <ContactShadows position={[0, -4.5, 0]} scale={20} blur={2} far={4.5} /> */}
       <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} />
