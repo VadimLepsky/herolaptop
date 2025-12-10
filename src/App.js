@@ -46,7 +46,7 @@ function Model(props) {
 export default function App() {
   return (
     <Canvas camera={{ position: [-5, 0, -15], fov: 55 }} style={{ background: 'transparent' }}>
-      <pointLight position={[10, 10, 10]} intensity={0.2} />$
+      <pointLight position={[10, 10, 10]} intensity={0} />$
       <Suspense fallback={null}>
   <group 
     rotation={[0, Math.PI, 0]} 
