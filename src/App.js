@@ -46,7 +46,6 @@ function Model(props) {
 export default function App() {
   return (
     <Canvas
-<Canvas
   gl={{ alpha: true }}
   onCreated={({ gl, scene }) => {
     console.log('Canvas onCreated — debug'); // проверка, что код выполняется
