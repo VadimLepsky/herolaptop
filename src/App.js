@@ -46,24 +46,25 @@ function Model(props) {
 export default function App() {
   return (
     <Canvas
-  gl={{ alpha: true }}                            
-  onCreated={({ gl }) => gl.setClearColor(0x000000, 0)} 
+<Canvas
+  gl={{ alpha: true }}
+  onCreated={({ gl, scene }) => {
+    console.log('Canvas onCreated — debug'); // проверка, что код выполняется
+    gl.setClearColor(0x000000, 0);
+    if (gl.toneMappingExposure !== undefined) gl.toneMappingExposure = 0.6; // уменьшить экспозицию
+    // Принудительно отключаем environment в сцене
+    scene.environment = null;
+    scene.background = null;
+  }}
   camera={{ position: [-5, 0, -15], fov: 55 }}
-  style={{ background: 'transparent' }}            
+  style={{ background: 'transparent' }}
 >
-      <pointLight position={[10, 10, 10]} intensity={1.5} />
-      <Suspense fallback={null}>
-  <group 
-    rotation={[0, Math.PI, 0]} 
-    position={[0, 1, 0]} 
-    scale={0.8}
-  >
-    <Model />
-  </group>
-  <Environment preset="city" intensity={0.2} />
-</Suspense>
-      {/* <ContactShadows position={[0, -4.5, 0]} scale={20} blur={2} far={4.5} /> */}
-      <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} />
-    </Canvas>
+  {/* временно отключаем все источники света */}
+  <ambientLight intensity={0.0001} />
+  <pointLight position={[10, 10, 10]} intensity={0} />
+  {/* временно убираем Environment (или ставим intensity=0) */}
+  {/* <Environment preset="city" intensity={0} background={false} /> */}
+  ...
+</Canvas>
   )
 }
