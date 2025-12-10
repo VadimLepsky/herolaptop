@@ -63,7 +63,6 @@ export default function App() {
   <pointLight position={[10, 10, 10]} intensity={0} />
   {/* временно убираем Environment (или ставим intensity=0) */}
   {/* <Environment preset="city" intensity={0} background={false} /> */}
-  ...
 </Canvas>
   )
 }
