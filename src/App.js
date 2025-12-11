@@ -15,6 +15,7 @@ useEffect(() => {
     materials.aluminium.color.set('#151315')      // тёмный базовый
     materials.aluminium.metalness = 1          // зеркал
     materials.aluminium.roughness = 0.2          // матовый
+      }
   if (materials.trackpad) {
     materials.trackpad.color.set('#151315');
   }
