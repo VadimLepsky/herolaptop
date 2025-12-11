@@ -13,8 +13,8 @@ useEffect(() => {
   if (!materials) return
   if (materials.aluminium) {
     materials.aluminium.color.set('#151315')      // тёмный базовый
-    materials.aluminium.metalness = 0.1          // меньше зеркал
-    materials.aluminium.roughness = 0.9          // более матовый
+    materials.aluminium.metalness = 1          // зеркал
+    materials.aluminium.roughness = 0.2          // матовый
   }
 }, [materials])
   // Make it float
