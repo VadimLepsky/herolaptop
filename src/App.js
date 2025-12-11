@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import React, { Suspense, useRef } from 'react'
+import React, { Suspense, useRef, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Html, Environment, useGLTF, ContactShadows, OrbitControls } from '@react-three/drei'
 import HeroPage from './HeroPage'
@@ -8,7 +8,6 @@ function Model(props) {
   const group = useRef()
   // Load model
   const { nodes, materials } = useGLTF('/mac-draco.glb')
-  import { useEffect } from 'react'
 
 useEffect(() => {
   if (!materials) return
