@@ -8,6 +8,16 @@ function Model(props) {
   const group = useRef()
   // Load model
   const { nodes, materials } = useGLTF('/mac-draco.glb')
+  import { useEffect } from 'react'
+
+useEffect(() => {
+  if (!materials) return
+  if (materials.aluminium) {
+    materials.aluminium.color.set('#151315')      // тёмный базовый
+    materials.aluminium.metalness = 0.1          // меньше зеркал
+    materials.aluminium.roughness = 0.9          // более матовый
+  }
+}, [materials])
   // Make it float
   useFrame((state) => {
     const t = state.clock.getElapsedTime()
@@ -46,7 +56,7 @@ function Model(props) {
 export default function App() {
   return (
     <Canvas camera={{ position: [-5, 0, -15], fov: 55 }} style={{ background: 'transparent' }}>
-      <pointLight position={[10, 10, 10]} intensity={0.5} />$
+      <pointLight position={[10, 10, 10]} intensity={0.5} />
       <Suspense fallback={null}>
   <group 
     rotation={[0, Math.PI, 0]} 
