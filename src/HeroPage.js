@@ -3,7 +3,7 @@ export default function HeroPage() {
   return (
     <div className="w-full h-full overflow-hidden rounded-[14px] bg-black">
       <iframe
-        src="https://iframe.videodelivery.net/b73e4bb737df2f222da96cba765e87d1?autoplay=true&muted=true&loop=true&controls=false"
+        src="https://iframe.mediadelivery.net/play/574718/2e1ef19b-af2e-4c5b-b1d4-62d6f67882ec"
         title="Stream video"
         allow="autoplay; encrypted-media; picture-in-picture"
         allowFullScreen
