@@ -37,11 +37,32 @@ useEffect(() => {
           <mesh material={materials['matte.001']} geometry={nodes['Cube008_1'].geometry} />
           <mesh geometry={nodes['Cube008_2'].geometry}>
             {/* Drei's HTML component can "hide behind" canvas geometry */}
-             <Html className="content" rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} transform occlude>
-              <div className="wrapper" onPointerDown={(e) => e.stopPropagation()}>
-                <HeroPage />
-              </div>
-            </Html>
+             <Html
+  className="content"
+  rotation-x={-Math.PI / 2}
+  position={[0, 0.05, -0.09]}
+  transform
+  occlude
+  style={{ pointerEvents: "none" }}
+>
+  <div
+    style={{ pointerEvents: "auto" }}
+    onWheel={(e) => {
+      e.preventDefault()
+      e.stopPropagation()
+    }}
+    onScroll={(e) => {
+      e.preventDefault()
+      e.stopPropagation()
+    }}
+    onTouchMove={(e) => {
+      e.preventDefault()
+      e.stopPropagation()
+    }}
+  >
+    <HeroPage />
+  </div>
+</Html>
           </mesh>
         </group>
       </group>
@@ -58,9 +79,6 @@ useEffect(() => {
 export default function App() {
   return (
     <Canvas camera={{ position: [-5, 0, -15], fov: 55 }} style={{ background: 'transparent' }}>
-  onWheel={(e) => e.stopPropagation()}
-  onPointerDown={(e) => e.stopPropagation()}
-  onPointerMove={(e) => e.stopPropagation()}
       <pointLight position={[10, 10, 10]} intensity={0.5} />
       <Suspense fallback={null}>
   <group 
